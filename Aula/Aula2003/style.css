@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(44, 44, 44);
+}
+
+/* id */
+#titulo {
+    margin-top: 20px;
+    font-family: cursive;
+    text-align: center;
+    text-decoration: underline;
+}
+
+/* tag */
+p {
+    color: rgb(112, 109, 109);
+}
+
+/* class */
+.paragrafo {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    text-align: justify;
+    line-height: 18px; /* Espaçamento entre linhas */
+    text-indent: 30px; /* Recuo da primeira linha */
+    margin-right: 30px;
+    margin-left: 20px;
+}
+
+.borda {
+    border: 1px solid rgb(112, 109, 109);
+    margin-top: 30px;
+    padding: 20px;
+    width: 285px; /* Largura */
+    height: 20px; /* Altura */
+}
+
+.link {
+    text-decoration: none;
+    color: rgb(80, 80, 223);
+    background-color: rgb(59, 59, 59);
+    padding: 6px;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+.link:hover {
+    background-color: rgb(80, 80, 223);
+    color: rgb(59, 59, 59);
+    text-decoration: underline;
+}

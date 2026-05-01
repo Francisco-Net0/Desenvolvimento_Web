@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" contpt-BRt="width=device-width, initial-scale=1.0">
+    <title>Aula 06/03</title>
+</head>
+<style>
+    fieldset {
+        width: 100px;
+        padding: 20px;
+    }
+
+    button {
+        margin-left: 95px;
+    }
+</style>
+<body>
+    <h1>Formulario</h1>
+    <form method="get">
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            <p>
+                Nome: <br>
+                <input type="text" name="nome" value="" minlength="3" maxlength="30" size="35"
+                    placeholder="Escreva seu nome:" required>
+            </p>
+
+            <p>
+                Data de Nascimento: <br>
+                <input type="date" name="nascimento" id="nascimento">
+            </p>
+
+            <p>
+                Sexo: <br>
+                <input type="radio" name="sexo" value="M" id="masculino">
+                <label for="masculino">Masculino</label>
+
+                <input type="radio" name="sexo" value="F" id="feminino">
+                <label for="feminino">Feminino</label>
+            </p>
+
+            <p>
+                Curso: <br>
+                <select name="curso">
+                    <option value="">Selecione um curso</option>
+                    <optgroup label="Informatica">
+                        <option value="ADS">ADS</option>
+                        <option value="TecInfo">Tec. Informática</option>
+                    </optgroup>
+                    <optgroup label="Quimica">
+                        <option value="ProQui">Proc. Quimicos</option>
+                        <option value="TecQui">Tec. Química</option>
+                    </optgroup>
+                </select>
+            </p>
+
+            <p>
+                Termos: <br>
+                <input type="checkbox" name="termos" id="termos" value="aceito">
+                <label for="termos">Concordo com os termos e condições</label>
+            </p>
+
+            <p><button type="submit">Enviar</button></p>
+        </fieldset>
+    </form>
+    <br>
+    <form method="get">
+        <fieldset>
+            <legend>Outros Dados</legend>
+            <p>
+                <label for="cor">Escolha sua cor:</label>
+                <input type="color" name="cor" id="cor">
+            </p>
+            <p>
+                <label for="data">Escolha uma data:</label>
+                <input type="datetime-local" name="data" id="data">
+            </p>
+            <p>
+                <label for="arquivo">Escolha um arquivo:</label>
+                <input type="file" name="arquivo" id="arquivo">
+            </p>
+            <p>
+                <input type="hidden" name="id" value="10">
+            </p>
+            <p>
+                <label for="volume">Volume: </label>
+                <input type="range" name="volume" id="volume" min="0" max="100">
+            </p>
+            <p>
+                <label for="reset">Resetar: </label>
+                <input type="reset" name="reset" id="reset">
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>
