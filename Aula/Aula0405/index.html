@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 04/05</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <style>
+        h1{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aula 04/05 - Javascript</h1>
+        <p>Nessa Aula os seguintes topicos serao abordados: </p>
+        <ul>
+            <li>Historia do Javascript/li>
+            <li>Como programar em Javascript/li>
+            <li>Primeiros comandos</li>
+            <li>Manipulação do DOM</li>
+        </ul>
+
+        <form>
+            <h1>Formulario</h1>
+            <div style="display: flex; gap: 10px;">
+                <input id="nome" class="form-control" type="text" placeholder="Digite seu nome">
+                <input onclick="clicar()" class="btn btn-primary" type="button" value="Enviar">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function clicar() {
+            let nome = document.getElementById("nome").value
+            window.alert(`Bem-Vindo(a), ${nome}`)
+        }
+    </script>
+</body>
+</html>
