@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 04/05</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <style>
+        h1 {
+            margin-top: 30px;
+        }
+
+        hr {
+            margin: 30px 0 30px 0;
+        }
+
+        span {
+            font-size: 25px;
+        }
+
+        label {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Formulario</h1>
+            <div style="display: flex; gap: 10px;">
+                <input id="nome" class="form-control" type="text" placeholder="Digite seu nome">
+                <input onclick="clicar()" class="btn btn-primary" type="button" value="Enviar">
+            </div>
+        </div>
+
+        <hr>
+
+        <div>
+            <h1>Somando Numeros</h1>
+            <div class="row g-2 align-items-center flex-nowrap">
+                <div class="col-auto">
+                    <input id="txtn1" type="number" class="form-control" placeholder="1° Numero">
+                </div>
+                <div class="col-auto">
+                    <span>+</span>
+                </div>
+                <div class="col-auto">
+                    <input id="txtn2" type="number" class="form-control" placeholder="2° Numero">
+                </div>
+                <div class="col-auto">
+                    <input type="button" class="btn btn-primary" value="Somar" onclick="somar()">
+                </div>
+                <div class="col-auto">
+                    <div id="res" value="Resultado"></div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div>
+            <label for="text">Nome: </label>
+            <input id="nome_02" type="text" name="nome">
+            <button type="button" id="btnConfirmar">Confirmar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

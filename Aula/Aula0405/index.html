@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <style>
-        h1{
+        h1 {
             margin-top: 20px;
         }
     </style>
@@ -17,26 +17,20 @@
         <h1>Aula 04/05 - Javascript</h1>
         <p>Nessa Aula os seguintes topicos serao abordados: </p>
         <ul>
-            <li>Historia do Javascript/li>
-            <li>Como programar em Javascript/li>
+            <li>Historia do Javascript</li>
+            <li>Como programar em Javascript</li>
             <li>Primeiros comandos</li>
             <li>Manipulação do DOM</li>
         </ul>
-
-        <form>
-            <h1>Formulario</h1>
-            <div style="display: flex; gap: 10px;">
-                <input id="nome" class="form-control" type="text" placeholder="Digite seu nome">
-                <input onclick="clicar()" class="btn btn-primary" type="button" value="Enviar">
-            </div>
-        </form>
     </div>
 
     <script>
-        function clicar() {
-            let nome = document.getElementById("nome").value
-            window.alert(`Bem-Vindo(a), ${nome}`)
-        }
+        let raio = 3
+        console.log("Raio: " + raio)
+        raio = 5
+        const pi = 3.14
+        let area = pi * (raio * raio)
+        console.log("Area do circulo: " + area)
     </script>
 </body>
 </html>
