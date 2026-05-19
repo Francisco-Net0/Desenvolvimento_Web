@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 18/05</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #titulo {
+            margin: 20px;
+            text-align: center;
+        }
+
+        #sub-titulo {
+            text-align: center;
+        }
+
+
+        #formAddFrutas {
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }   
+
+        li {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="titulo">Lista de Frutas</h1>
+        <div id="formAddFrutas">
+            <fieldset class="p-3 border rounded">
+                <legend id="sub-titulo">Adicionar Nova Fruta</legend>
+                <label for="fruta">Nova Fruta:</label>
+                <input type="text" name="fruta" id="fruta" placeholder="Digite o nome da fruta" class="form-control mb-2" />
+                <button id="btnSalvar" class="btn btn-primary">Adicionar</button>
+            </fieldset>
+        </div>
+
+        <div id="frutas" class="p-3 border rounded">
+            <ul id="lista-frutas" class="list-group">
+                <!-- Frutas adicionadas dinamicamente -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
