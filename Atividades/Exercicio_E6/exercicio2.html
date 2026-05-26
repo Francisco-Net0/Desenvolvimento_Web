@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 02</title>
-
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-
     <style>
         .container {
             margin-top: 30px;
@@ -22,51 +19,29 @@
             font-size: 30px;
             margin-top: 30px;
         }
+
+        #div-atualizar{
+            margin-bottom: 20px;
+        }
     </style>
 </head>
-
 <body>
-
     <div class="container">
-
-        <!-- FORMULÁRIO CADASTRO -->
         <div class="card shadow p-4">
-
             <h2 id="titulo">Cadastro de Produto</h2>
-
             <div class="mb-3">
-                <label for="produto" class="form-label">
-                    Nome do Produto
-                </label>
-
-                <input type="text"
-                       id="produto"
-                       class="form-control"
-                       placeholder="Digite o nome do produto">
+                <label for="produto" class="form-label">Nome do Produto</label>
+                <input type="text" id="produto" class="form-control" placeholder="Digite o nome do produto">
             </div>
-
             <div class="mb-3">
-                <label for="estoque" class="form-label">
-                    Estoque
-                </label>
-
-                <input type="number"
-                       id="estoque"
-                       class="form-control"
-                       placeholder="Digite a quantidade">
+                <label for="estoque" class="form-label">Estoque</label>
+                <input type="number" id="estoque" class="form-control" placeholder="Digite a quantidade">
             </div>
-
-            <button id="btnSalvar"
-                    class="btn btn-primary w-100">
-                Salvar Produto
-            </button>
-
+            <button id="btnSalvar" class="btn btn-primary w-100">Salvar Produto</button>
         </div>
 
-        <!-- TABELA -->
         <h2 id="subtitulo">Produtos Cadastrados</h2>
-
-        <table class="table table-bordered table-striped mt-3">
+        <table class="table table-bordered text-center mt-3">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -75,109 +50,68 @@
                 </tr>
             </thead>
 
-            <tbody id="tabelaProdutos">
-
-            </tbody>
+            <tbody class="text-center" id="tabelaProdutos"></tbody>
         </table>
 
-        <!-- FORMULÁRIO ESTOQUE -->
-        <div class="card shadow p-4 mt-4">
-
-            <h3 class="text-center mb-4">
-                Atualizar Estoque
-            </h3>
-
+        <div id="div-atualizar" class="card shadow p-4 mt-4">
+            <h3 class="text-center mb-4">Atualizar Estoque</h3>
             <div class="mb-3">
-                <label for="idProduto" class="form-label">
-                    ID do Produto
-                </label>
-
-                <input type="number"
-                       id="idProduto"
-                       class="form-control"
-                       placeholder="Digite o ID">
+                <label for="idProduto" class="form-label">ID do Produto</label>
+                <input type="number" id="idProduto" class="form-control" placeholder="Digite o ID">
             </div>
-
             <div class="mb-3">
-                <label for="quantidade" class="form-label">
-                    Quantidade
-                </label>
-
-                <input type="number"
-                       id="quantidade"
-                       class="form-control"
-                       placeholder="Digite a quantidade">
+                <label for="quantidade" class="form-label">Quantidade</label>
+                <input type="number" id="quantidade" class="form-control" placeholder="Digite a quantidade">
             </div>
-
-            <!-- RADIO -->
             <div class="mb-3">
-
                 <div class="form-check">
-                    <input type="radio"
-                           name="operacao"
-                           id="adicionar"
-                           class="form-check-input"
-                           checked>
-
-                    <label for="adicionar" class="form-check-label">
-                        Adicionar
-                    </label>
+                    <input type="radio" name="operacao" id="adicionar" class="form-check-input" checked>
+                    <label for="adicionar" class="form-check-label">Adicionar</label>
                 </div>
-
                 <div class="form-check">
-                    <input type="radio"
-                           name="operacao"
-                           id="remover"
-                           class="form-check-input">
-
-                    <label for="remover" class="form-check-label">
-                        Remover
-                    </label>
+                    <input type="radio" name="operacao" id="remover" class="form-check-input">
+                    <label for="remover" class="form-check-label">Remover</label>
                 </div>
-
             </div>
 
-            <button id="btnConfirmar"
-                    class="btn btn-primary w-100">
-                Confirmar
-            </button>
-
+            <button id="btnConfirmar" class="btn btn-primary w-100">Confirmar</button>
         </div>
-
     </div>
 
     <script>
-        let produtos = []
-        let nextId = 1
+        let produtos = [
+            { id: 1, nome: "Mouse", estoque: 20 }
+        ]
+        let nextId = 2
 
-        // LISTAR PRODUTOS
         function listarProdutos() {
-
             const tabela = document.getElementById("tabelaProdutos")
-
             tabela.innerHTML = ""
-
             for (let p of produtos) {
-
                 const linha = document.createElement("tr")
-
                 linha.innerHTML = `
-                    <td>${p.id}</td>
-                    <td>${p.nome}</td>
-                    <td>${p.estoque}</td>
+                <td>${p.id}</td>
+                <td>${p.nome}</td>
+                <td>${p.estoque}</td>
                 `
-
                 tabela.append(linha)
             }
         }
 
-        // SALVAR PRODUTO
         const btnSalvar = document.getElementById("btnSalvar")
-
         btnSalvar.addEventListener("click", function () {
-
-            const nome = document.getElementById("produto").value
+            const nome = document.getElementById("produto").value.trim()
             const estoque = Number(document.getElementById("estoque").value)
+
+            if (nome === "") {
+                alert("Digite o nome do produto")
+                return
+            }
+
+            if (estoque < 0 || isNaN(estoque)) {
+                alert("Estoque inválido")
+                return
+            }
 
             produtos.push({
                 id: nextId,
@@ -186,45 +120,54 @@
             })
 
             nextId++
-
             listarProdutos()
-
-            document.getElementById("produto").value = ""
-            document.getElementById("estoque").value = ""
+            limparCadastro()
         })
 
-        // ATUALIZAR ESTOQUE
         const btnConfirmar = document.getElementById("btnConfirmar")
-
         btnConfirmar.addEventListener("click", function () {
-
             const id = Number(document.getElementById("idProduto").value)
             const quantidade = Number(document.getElementById("quantidade").value)
-
             const adicionar = document.getElementById("adicionar").checked
+            const produto = produtos.find(function(p) {
+                return p.id === id
+            })
 
-            for (let p of produtos) {
+            if (produto == null) {
+                alert("Produto não encontrado")
+                return
+            }
 
-                if (p.id == id) {
+            if (quantidade <= 0) {
+                alert("Quantidade inválida")
+                return
+            }
 
-                    if (adicionar) {
-                        p.estoque += quantidade
-                    } else {
-                        p.estoque -= quantidade
-                    }
-
+            if (adicionar) {
+                produto.estoque += quantidade
+            } else {
+                if (quantidade > produto.estoque) {
+                    alert("Estoque insuficiente")
+                    return
                 }
-
+                produto.estoque -= quantidade
             }
 
             listarProdutos()
-
-            document.getElementById("idProduto").value = ""
-            document.getElementById("quantidade").value = ""
+            limparMovimento()
         })
 
+        function limparCadastro() {
+            document.getElementById("produto").value = ""
+            document.getElementById("estoque").value = ""
+        }
+
+        function limparMovimento() {
+            document.getElementById("idProduto").value = ""
+            document.getElementById("quantidade").value = ""
+        }
+
+        listarProdutos()
     </script>
-
 </body>
-
 </html>
