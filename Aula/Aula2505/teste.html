@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tarefas</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 96%;
+            margin-top: 5px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #4a90e2;
+            color: white;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            background: #f9fafc;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+        }
+
+        .btns button {
+            width: auto;
+            margin-left: 5px;
+            padding: 5px 8px;
+            font-size: 12px;
+        }
+
+        .edit {
+            background: orange;
+        }
+
+        .delete {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Sistema de Tarefas</h2>
+
+        <input type="text" id="nome" placeholder="Nome">
+        <input type="text" id="descricao" placeholder="Descrição">
+        <button onclick="salvar()">Salvar</button>
+
+        <ul id="lista"></ul>
+    </div>
+
+    <script>
+        let lista = [
+            { id: 1, nome: "Prova 01", descricao: "Estudar para Matematica" },
+            { id: 2, nome: "Prova 02", descricao: "Estudar para Fisica" }
+        ]
+        let editandoId = null;
+
+        function salvar() {
+            const nome = document.getElementById("nome").value;
+            const descricao = document.getElementById("descricao").value;
+
+            if (!nome) {
+                return alert("Digite um nome!");
+            }
+
+            if (editandoId === null) {
+                lista.push({
+                    id: Date.now(),
+                    nome,
+                    descricao
+                });
+            } else {
+                const item = lista.find(function(item) {
+                    return item.id === editandoId
+                });
+
+                if (item) {
+                    item.nome = nome;
+                    item.descricao = descricao;
+                }
+                editandoId = null;
+            }
+
+            limpar();
+            mostrar();
+        }
+
+        function mostrar() {
+            const ul = document.getElementById("lista");
+            ul.innerHTML = "";
+
+            lista.forEach(item => {
+                ul.innerHTML += `
+                    <li>
+                        <div>
+                            <b>${item.nome}</b><br>
+                            <small>${item.descricao}</small>
+                        </div>
+
+                        <div class="btns">
+                            <button class="edit" onclick="editar(${item.id})">
+                                Editar
+                            </button>
+
+                            <button class="delete" onclick="deletar(${item.id})">
+                                Excluir
+                            </button>
+                        </div>
+                    </li>
+                `;
+            });
+        }
+
+        function editar(id) {
+            const item = lista.find(function(item) {
+                return item.id === id
+            });
+            document.getElementById("nome").value = item.nome;
+            document.getElementById("descricao").value = item.descricao;
+            editandoId = id;
+        }
+
+        function deletar(id) {
+            lista = lista.filter(function(item) {
+                return item.id !== id
+            });
+            mostrar();
+        }
+
+        function limpar() {
+            document.getElementById("nome").value = "";
+            document.getElementById("descricao").value = "";
+        }
+
+        mostrar();
+    </script>
+</body>
+
+</html>
