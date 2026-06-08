@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01/06 - GitHub</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <style>
+        ul{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul id="listar" class="list-group"></ul>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            githubAPI();
+        }
+        async function githubAPI() {
+            const url = "https://api.github.com/users/rafaelwendel";
+            const req = await fetch(url);
+            const dados = await req.json(); // converter o json retornado
+            const lista = document.getElementById("listar");
+
+            lista.innerHTML = `
+                <li class="list-group-item">${dados.name}</li>
+            `;
+        }
+    </script>
+</body>
+
+</html>

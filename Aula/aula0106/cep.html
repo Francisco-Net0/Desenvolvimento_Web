@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01/06 - CEP</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+
+    <style>
+        h1 {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #conteudo {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        label{
+            padding-top: 4px;
+            font-size: 20px;
+        }
+
+        #infoEndereco {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        p{
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pesquisa de CEP</h1>
+        <div id="conteudo" class="p-3 border rounded">
+            <label>Informe o CEP:</label>
+            <input type="text" id="cep">
+            <button class="btn btn-primary" type="button" id="btnConsultar">Consultar</button>
+        </div>
+        <div>
+            <p id="infoEndereco"></p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        async function requestCep(cep) {
+            const url = "https://brasilapi.com.br/api/cep/v1/" + cep;
+            const req = await fetch(url);
+            const dados = await req.json();
+
+            const infoEnd = document.getElementById("infoEndereco");
+            // Ex: Rua Brasil - Centro. São Paulo/SP 
+            infoEnd.textContent = dados.street + " - " +
+                dados.neighborhood + ". " +
+                dados.city + "/" + dados.state;
+        }
+
+        window.onload = function () {
+            const btnConsultar = document.getElementById("btnConsultar");
+            btnConsultar.addEventListener("click", function () {
+                const cep = document.getElementById("cep").value;
+                requestCep(cep);
+            });
+        }
+    </script>
+</body>
+
+</html>
