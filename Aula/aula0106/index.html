@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01/06</title>
+</head>
+<body>
+    <ul id="lista"></ul>
+    <script type="text/javascript">
+        window.onload = function() {
+            console.log("Iniciado...");
+            const req = new XMLHttpRequest();
+            req.open("GET", "http://127.0.0.1:5500/frutas.json");
+            req.send(); // processar/enviar a requisição!
+            req.onload = function() {
+                const frutas = JSON.parse(req.response);
+                const lista = document.getElementById("lista");  
+                for(let item of frutas) {
+                    const li = document.createElement("li");
+                    li.textContent = item.nome;
+                    lista.append(li);
+                    console.log(item.nome);
+                }  
+            };
+            console.log("Finalizado");
+        }
+    </script>
+</body>
+</html>

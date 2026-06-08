@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01/06 - CEP</title>
+</head>
+<body>
+    <h1>Pesquisa de CEP</h1>
+    <label>Informe o CEP:</label>
+    <input type="text" id="cep" />
+    <button type="button" id="btnConsultar">Consultar</button>
+
+    <p id="infoEndereco"></p>
+
+    <script type="text/javascript">
+        async function requestCep(cep) {
+            const url = "https://brasilapi.com.br/api/cep/v1/" + cep;
+            const req = await fetch(url);
+            const dados = await req.json();
+
+            const infoEnd = document.getElementById("infoEndereco");
+            // Ex: Rua Brasil - Centro. São Paulo/SP 
+            infoEnd.textContent = dados.street + " - " + 
+                        dados.neighborhood + ". " + 
+                        dados.city + "/" + dados.state;
+        }
+
+        window.onload = function() {
+            const btnConsultar = document.getElementById("btnConsultar");
+            btnConsultar.addEventListener("click", function(){
+                const cep = document.getElementById("cep").value;
+                requestCep(cep);
+            });
+        }
+    </script>
+</body>
+</html>
