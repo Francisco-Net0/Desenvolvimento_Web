@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas (Supabase)</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <style>
+        h1 {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        input {
+            margin: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 10px;
+            margin: 5px;
+            padding: 10px;
+            width: 200px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lista de Tarefas</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Descrição</th>
+                    <th>Prioridade</th>
+                </tr>
+            </thead>
+            <tbody id="dadosTabela">
+                <!-- tarefas provenientes da API -->
+            </tbody>
+        </table>
+        <h1>Add Nova Tarefa</h3>
+        <div class="mb-3">
+            <label class="form-label">Descrição</label>
+            <input type="text" id="descricao" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Prioridade</label>
+            <input type="text" id="prioridade" class="form-control" />
+        </div>
+        <div class="text-center">
+            <button type="button" id="btnAdicionar" class="btn btn-primary">Adicionar</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // exemplo a partir de uma tabela "tarefas" com as colunas: "id", "descricao" e "prioridade"
+        const url = "https://dgpgyhvgxwkstyvyfmlj.supabase.co/rest/v1/tarefas"
+        const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRncGd5aHZneHdrc3R5dnlmbWxqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5NTEyNjksImV4cCI6MjA5NjUyNzI2OX0.cZycg2P6be2YsEdIPyuckOn-9jieeIarSbPhbEUgD9c"
+
+        window.onload = function () {
+            // listar as tarefas na tabela
+            getTarefas();
+
+            const btnAdicionar = document.getElementById("btnAdicionar");
+            btnAdicionar.addEventListener("click", function () {
+                addTarefa();
+            });
+        }
+
+        async function getTarefas() {
+            const listaTarefas = await fetch(url, {
+                headers: {
+                    "apikey": apikey
+                }
+            }).then(response => response.json());
+
+            const dadosTabela = document.getElementById("dadosTabela");
+            // limpar os dados da tabela
+            dadosTabela.innerHTML = "";
+
+            for (let tarefa of listaTarefas) {
+                // criar uma nova linha (tr) e 3 colunas (td)
+                const tr = document.createElement("tr");
+                const tdId = document.createElement("td");
+                const tdDescricao = document.createElement("td");
+                const tdPrioridade = document.createElement("td");
+
+                tdId.textContent = tarefa.id;
+                tdDescricao.textContent = tarefa.descricao;
+                tdPrioridade.textContent = tarefa.prioridade;
+
+                // insere as colunas dentro da linha
+                tr.append(tdId, tdDescricao, tdPrioridade);
+                // insere a linha dentro da tabela
+                dadosTabela.append(tr);
+            }
+        }
+
+        async function addTarefa() {
+            // pegar os valores preenchidos no formulário
+            const descricao = document.getElementById("descricao");
+            const prioridade = document.getElementById("prioridade");
+
+            const tarefa = {
+                "descricao": descricao.value,
+                "prioridade": prioridade.value
+            };
+
+            const resposta = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "apikey": apikey,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(tarefa) // converte o obj JS para JSON
+            });
+
+            if (resposta.ok == true) {
+                alert("Tarefa adicionada com sucesso");
+                getTarefas();
+                // limpar os campos
+                descricao.value = "";
+                prioridade.value = "";
+            }
+            else {
+                alert("Erro ao adicionar tarefa");
+            }
+        }
+    </script>
+</body>
+
+</html>
