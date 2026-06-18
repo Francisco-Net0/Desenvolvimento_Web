@@ -1,0 +1,208 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)),
+        url("../img/home.png");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero .btn {
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+/* SOBRE */
+#sobre {
+    background: #fff;
+}
+
+#sobre img {
+    transition: .4s;
+}
+
+#sobre img:hover {
+    transform: scale(1.03);
+}
+
+/* SERVIÇOS */
+#servicos {
+    background: #f8f9fa;
+}
+
+.service-card {
+    border: none;
+    border-radius: 20px;
+    transition: .3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .12);
+}
+
+.service-card i {
+    font-size: 3rem;
+}
+
+/* AGENDAMENTO */
+#agendamento {
+    background: #fff;
+}
+
+/* CARD DO FORMULARIO */
+#agendamento .card {
+    border-radius: 25px;
+}
+
+#agendamento .form-control,
+#agendamento .form-select {
+    padding: 14px;
+    border-radius: 10px;
+}
+
+#agendamento .btn-warning {
+    padding: 14px;
+    transition: .3s;
+    border-radius: 10px;
+}
+
+#agendamento .btn-warning:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+}
+
+/* RODAPÉ */
+footer {
+    background: #0d0d0d;
+}
+
+footer .social a {
+    font-size: 1.8rem;
+    transition: .3s;
+    display: inline-block;
+}
+
+footer .social a:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* BOTÃO WHATSAPP */
+.btn-whatsapp {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: .3s;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.1);
+}
+
+/* PAINEL ADMIN */
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* SIDEBAR */
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #1e2229;
+    color: #fff;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #11141a;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    display: block;
+    color: #b8c7ce;
+    text-decoration: none;
+    transition: .2s;
+}
+
+#sidebar ul li a:hover {
+    color: #fff;
+    background: #2c313c;
+}
+
+#sidebar ul li.active > a {
+    background: #ffc107;
+    color: #111;
+    font-weight: bold;
+}
+
+/* CONTEÚDO ADMIN */
+#content {
+    width: 100%;
+    padding: 30px;
+}
+
+/* CARDS DASHBOARD */
+.card-dash {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #sidebar {
+        min-width: 200px;
+        max-width: 200px;
+    }
+
+    #content {
+        padding: 15px;
+    }
+
+    .btn-whatsapp {
+        width: 60px;
+        height: 60px;
+    }
+}
