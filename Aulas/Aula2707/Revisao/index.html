@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #title {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 id="title">Cadastro de Alunos</h1>
+        <form onsubmit="return false;">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Digite o nome do aluno">
+            </div>
+
+            <div class="mb-3">
+                <label for="idade" class="form-label">Idade</label>
+                <input type="number" class="form-control" id="idade" placeholder="Digite a idade">
+            </div>
+
+            <div class="mb-3">
+                <label for="curso" class="form-label">Curso</label>
+                <input type="text" class="form-control" id="curso" placeholder="Digite o curso">
+            </div>
+
+            <div class="text-center">
+                <button type="button" class="btn btn-primary" onclick="cadastrarAluno()">
+                    Cadastrar
+                </button>
+            </div>
+        </form>
+
+        <hr>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="mostrarAlunos()">
+                Mostrar Alunos
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="mostrarMaioresDe18()">
+                Mostrar Apenas Maiores de 18
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="mostrarNomes()">
+                Mostrar Apenas Nomes
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="contarAlunos()">
+                Contar Alunos
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="removerUltimoAluno()">
+                Remover Último Aluno
+            </button>
+        </div>
+
+        <hr>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        let alunos = [];
+
+        function cadastrarAluno() {
+            const nome = document.getElementById("nome").value.trim();
+            const idade = parseInt(document.getElementById("idade").value);
+            const curso = document.getElementById("curso").value.trim();
+            if (nome === "" || isNaN(idade) || curso === "") {
+                alert("Preencha todos os campos.");
+                return;
+            }
+            alunos.push({
+                nome,
+                idade,
+                curso
+            });
+            alert("Aluno cadastrado com sucesso!");
+            document.getElementById("nome").value = "";
+            document.getElementById("idade").value = "";
+            document.getElementById("curso").value = "";
+            document.getElementById("nome").focus();
+        }
+
+        function mostrarAlunos() {
+            const resultado = document.getElementById("resultado");
+            if (alunos.length === 0) {
+                resultado.innerHTML = "<h3>Nenhum aluno cadastrado.</h3>";
+                return;
+            }
+            let html = "<h3>Lista de Alunos</h3><ul>";
+            alunos.forEach(aluno => {
+                html += `<li>
+                    <strong>${aluno.nome}</strong> -
+                    ${aluno.idade} anos -
+                    ${aluno.curso}
+                </li>`;
+            });
+            html += "</ul>";
+            resultado.innerHTML = html;
+        }
+
+        function mostrarMaioresDe18() {
+            const resultado = document.getElementById("resultado");
+            const maiores = alunos.filter(aluno => aluno.idade >= 18);
+            if (maiores.length === 0) {
+                resultado.innerHTML = "<h3>Nenhum aluno maior de 18 anos.</h3>";
+                return;
+            }
+            let html = "<h3>Alunos Maiores de 18</h3><ul>";
+            maiores.forEach(aluno => {
+                html += `<li>
+                    <strong>${aluno.nome}</strong> -
+                    ${aluno.idade} anos -
+                    ${aluno.curso}
+                </li>`;
+            });
+            html += "</ul>";
+            resultado.innerHTML = html;
+        }
+
+        function mostrarNomes() {
+            const resultado = document.getElementById("resultado");
+            if (alunos.length === 0) {
+                resultado.innerHTML = "<h3>Nenhum aluno cadastrado.</h3>";
+                return;
+            }
+            let html = "<h3>Lista de Nomes</h3><ul>";
+            alunos.forEach(aluno => {
+                html += `<li>${aluno.nome}</li>`;
+            });
+            html += "</ul>";
+            resultado.innerHTML = html;
+        }
+
+        function contarAlunos() {
+            document.getElementById("resultado").innerHTML = `<h3>Total de alunos cadastrados: ${alunos.length}</h3>`;
+        }
+
+        function removerUltimoAluno() {
+            const resultado = document.getElementById("resultado");
+            if (alunos.length === 0) {
+                resultado.innerHTML = "<h3>Não há alunos para remover.</h3>";
+                return;
+            }
+            const removido = alunos.pop();
+            resultado.innerHTML = `
+                <h3>Aluno removido com sucesso!</h3>
+                <p><strong>${removido.nome}</strong></p>
+            `;
+        }
+    </script>
+</body>
+</html>
