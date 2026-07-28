@@ -19,16 +19,13 @@
 <body>
   <div class="container">
     <h1>Lista de Compras</h1>
-
     <div class="mb-3">
       <div class="input-group">
         <input type="text" id="item_lista" class="form-control" placeholder="Digite um item">
-        <button type="button" class="btn btn-primary" onclick="Adicionar()">Adicionar</button>
+        <button class="btn btn-primary" onclick="Adicionar()">Adicionar</button>
       </div>
     </div>
-
     <hr>
-
     <ul id="result-list" class="list-group"></ul>
   </div>
 
@@ -36,33 +33,32 @@
     let lista_Compras = [];
 
     function Adicionar() {
-      // Captura o campo de texto
-      const inputItem = document.getElementById("item_lista");
-      // Obtém o texto digitado
-      const textoItem = inputItem.value.trim();
-      // Não permite itens vazios
-      if (textoItem === "") {
+      const input = document.getElementById("item_lista");
+      const item = input.value.trim();
+      if (item == "") {
         alert("Digite um item!");
-        inputItem.focus();
+        input.focus();
         return;
       }
-      // Adiciona ao array
-      lista_Compras.push(textoItem);
-      // Seleciona a lista
-      const resultado = document.getElementById("result-list");
-      // Cria um novo <li>
-      const novoItem = document.createElement("li");
-      // Adiciona a classe Bootstrap
-      novoItem.className = "list-group-item";
-      // Insere o texto
-      novoItem.textContent = textoItem;
-      // Adiciona o <li> na <ul>
-      resultado.appendChild(novoItem);
-      // Limpa o campo
-      inputItem.value = "";
-      // Retorna o foco para o input
-      inputItem.focus();
+      lista_Compras.push(item);
+      MostrarLista();
+      input.value = "";
+      input.focus();
     }
+
+    function MostrarLista() {
+      const resultado = document.getElementById("result-list");
+      resultado.innerHTML = "";
+      lista_Compras.forEach(function (item) {
+        resultado.innerHTML += `
+            <li class="list-group-item">
+                ${item}
+            </li>
+        `;
+      });
+    }
+
   </script>
 </body>
+
 </html>
