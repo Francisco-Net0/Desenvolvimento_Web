@@ -1,0 +1,406 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.cabecalho-principal {
+  background-color: #d62828;
+  padding: 18px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.conteudo-cabecalho {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-loja {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.menu-navegacao {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.menu-navegacao a {
+  color: white;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.menu-navegacao a:hover,
+.menu-navegacao a.active {
+  border-bottom: 2px solid white;
+}
+
+.area-principal {
+  min-height: calc(100vh - 150px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* HOME */
+
+.banner-principal {
+  min-height: 430px;
+  background: white;
+  border-radius: 20px;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.destaque-home {
+  color: #d62828;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.banner-principal h1 {
+  font-size: 46px;
+  margin: 20px 0;
+  line-height: 1.15;
+}
+
+.banner-principal p {
+  font-size: 18px;
+  color: #666;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.icone-principal {
+  font-size: 180px;
+  animation: flutuar 2s ease-in-out infinite alternate;
+}
+
+@keyframes flutuar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-15px);
+  }
+}
+
+.area-botoes-principais {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.botao-principal {
+  display: inline-block;
+  border: none;
+  background-color: #d62828;
+  color: white;
+  padding: 13px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.botao-principal:hover {
+  transform: translateY(-2px);
+  background-color: #b71f1f;
+}
+
+.botao-secundario {
+  background-color: #333;
+}
+
+.botao-secundario:hover {
+  background-color: #111;
+}
+
+.lista-vantagens {
+  margin-top: 35px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.item-vantagem {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.item-vantagem h2 {
+  margin-bottom: 10px;
+}
+
+/* TÍTULOS */
+
+.cabecalho-pagina {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.cabecalho-pagina h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.cabecalho-pagina p {
+  color: #666;
+  font-size: 17px;
+}
+
+/* CARDÁPIO */
+
+.grade-cardapio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.cartao-produto {
+  background-color: white;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  transition: 0.3s;
+}
+
+.cartao-produto:hover {
+  transform: translateY(-5px);
+}
+
+.icone-produto {
+  font-size: 70px;
+  margin-bottom: 15px;
+}
+
+.cartao-produto h2 {
+  margin-bottom: 12px;
+}
+
+.cartao-produto p {
+  color: #666;
+  line-height: 1.5;
+  min-height: 70px;
+}
+
+.cartao-produto strong {
+  display: block;
+  margin-top: 20px;
+  color: #d62828;
+  font-size: 20px;
+}
+
+/* FORMULÁRIO */
+
+.secao-formulario-pedido {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.formulario-pedido {
+  background-color: white;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.campo-formulario {
+  margin-bottom: 20px;
+}
+
+.campo-formulario label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.campo-formulario textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+  outline: none;
+  border-color: #d62828;
+}
+
+.botao-formulario {
+  width: 100%;
+}
+
+/* PEDIDOS */
+
+.lista-pedidos-cadastrados {
+  display: grid;
+  gap: 20px;
+}
+
+.cartao-pedido {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.informacoes-pedido h2 {
+  margin-bottom: 15px;
+  color: #d62828;
+}
+
+.informacoes-pedido p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.informacoes-pedido small {
+  display: block;
+  margin-top: 15px;
+  color: #777;
+}
+
+.botao-remover-pedido {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.botao-remover-pedido:hover {
+  background-color: #111;
+}
+
+.estado-sem-pedidos {
+  background-color: white;
+  padding: 50px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.estado-sem-pedidos h2 {
+  margin-bottom: 15px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 800px) {
+  .conteudo-cabecalho {
+    flex-direction: column;
+  }
+
+  .menu-navegacao {
+    justify-content: center;
+  }
+
+  .banner-principal {
+    padding: 40px 25px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .banner-principal h1 {
+    font-size: 36px;
+  }
+
+  .icone-principal {
+    font-size: 130px;
+  }
+
+  .area-botoes-principais {
+    justify-content: center;
+  }
+
+  .lista-vantagens,
+  .grade-cardapio {
+    grid-template-columns: 1fr;
+  }
+
+  .cartao-pedido {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .botao-remover-pedido {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .cabecalho-principal {
+    padding: 15px;
+  }
+
+  .menu-navegacao {
+    gap: 10px;
+  }
+
+  .menu-navegacao a {
+    font-size: 14px;
+  }
+
+  .banner-principal h1 {
+    font-size: 30px;
+  }
+
+  .cabecalho-pagina h1 {
+    font-size: 28px;
+  }
+
+  .formulario-pedido {
+    padding: 20px;
+  }
+}
