@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Cards</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    label {
+      margin-top: 10px;
+    }
+
+    .btn {
+      margin: 30px 0;
+    }
+
+    #resultado {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Gerador de Cards</h1>
+
+    <form>
+      <div class="form-group">
+        <label for="nomeProduto">Nome do Produto:</label>
+        <input type="text" class="form-control" id="nomeProduto">
+      </div>
+      <div class="form-group">
+        <label for="precoProduto">Preço</label>
+        <input type="number" step="0.01" class="form-control" id="precoProduto">
+      </div>
+      <div id="btn" class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" onclick="Cadastrar()">Cadastrar</button>
+      </div>
+    </form>
+
+    <hr>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    let lista = [
+      { nome: 'Arroz', preco: 5.99 }
+    ];
+
+    function Cadastrar() {
+      const nome = document.getElementById("nomeProduto").value;
+      const preco = parseFloat(document.getElementById("precoProduto").value);
+      if (nome == "" || isNaN(preco)) {
+        alert("Digite um item válido!");
+        return;
+      }
+
+      lista.push({ nome: nome, preco: preco });
+
+      limpar();
+      MostrarLista(); // Atualiza a tela após cadastrar
+    }
+
+    function MostrarLista() {
+      const resultado = document.getElementById("resultado");
+      resultado.innerHTML = "";
+
+      // O forEach recebe o item (objeto) da lista
+      lista.forEach(function (produto) {
+        resultado.innerHTML += `
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">${produto.nome}</h5>
+                <h6 class="mb-2 text-muted">R$ ${produto.preco.toFixed(2)}</h6>
+              </div>
+            </div>
+        `;
+      });
+    }
+
+    function limpar() {
+      document.getElementById("nomeProduto").value = "";
+      document.getElementById("precoProduto").value = "";
+    }
+
+    MostrarLista();
+  </script>
+</body>
+
+</html>

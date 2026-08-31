@@ -1,0 +1,202 @@
+1. Exercício 1 – Lista de Compras
+   Crie uma página contendo:
+
+   * um campo de texto;
+   * um botão Adicionar;
+   * uma lista (`<ul>`).
+
+   Ao clicar no botão:
+
+   * ler o texto digitado;
+   * criar um elemento `<li>`;
+   * inserir o texto dentro do `<li>`;
+   * adicionar o item na lista.
+
+   Desafio: não permitir adicionar itens vazios.
+
+---
+
+2. Exercício 2 – Gerador de Cards
+   Crie um formulário com:
+
+   * Nome do Produto;
+   * Preço;
+   * botão Cadastrar.
+
+   Ao clicar em Cadastrar:
+
+   * criar uma `<div class="card">`;
+   * mostrar o nome do produto;
+   * mostrar o preço;
+   * adicionar o card na página.
+
+   Faça toda a criação usando:
+
+   * `createElement()`;
+   * `append()`.
+
+---
+
+3. Exercício 3 – Alterando Estilos
+   Crie uma página contendo:
+
+   * um parágrafo;
+   * um botão.
+
+   Ao clicar no botão:
+
+   * aumentar o tamanho da fonte;
+   * mudar a cor do texto;
+   * deixar o texto em negrito;
+   * adicionar uma borda.
+
+   Utilize a propriedade:
+
+   * `element.style`.
+
+---
+
+4. Exercício 4 – Contador
+   Crie uma página com:
+
+   * um número iniciando em 0;
+   * botão +;
+   * botão -.
+
+   Ao clicar nos botões:
+
+   * atualizar o número exibido na tela.
+
+   Desafio: impedir valores negativos.
+
+---
+
+5. Exercício 5 – Tema Claro/Escuro
+   Crie um botão chamado Alternar Tema.
+
+   Quando clicar:
+
+   * trocar a cor de fundo da página;
+   * trocar a cor do texto;
+   * trocar a cor dos botões.
+
+---
+
+6. Exercício 6 – Cadastro de Pessoas
+   Crie um formulário com:
+
+   * Nome;
+   * Idade;
+   * Cidade;
+   * botão Cadastrar.
+
+   Ao cadastrar:
+
+   * criar uma tabela;
+   * adicionar uma nova linha (`<tr>`);
+   * preencher automaticamente as colunas com os dados informados.
+
+---
+
+7. Exercício 7 – Buscar Usuário no GitHub
+   Utilize:
+
+   * `fetch()`.
+
+   API:
+
+   ```
+   https://api.github.com/users/octocat
+   ```
+
+   Mostre na página:
+
+   * foto;
+   * nome;
+   * login;
+   * seguidores;
+   * seguindo;
+   * repositórios públicos.
+
+---
+
+8. Exercício 8 – Consulta CEP
+   Utilize a BrasilAPI:
+
+   ```
+   https://brasilapi.com.br/api/cep/v1/01001000
+   ```
+
+   Exiba:
+
+   * rua;
+   * bairro;
+   * cidade;
+   * estado.
+
+   Desafio: permitir que o usuário digite o CEP para realizar a consulta.
+
+---
+
+9. Exercício 9 – Lista de Favoritos
+   Crie um formulário contendo:
+
+   * Nome do site;
+   * Link;
+   * botão Adicionar.
+
+   Ao clicar:
+
+   * criar um link (`<a>`);
+   * definir o texto;
+   * definir o atributo `href`;
+   * abrir o link em uma nova aba (`target="_blank"`).
+
+   Adicione cada link em uma lista.
+
+---
+
+10. Exercício 10 – Galeria de Imagens
+    Crie um campo onde o usuário informe a URL de uma imagem.
+
+    Ao clicar em Adicionar:
+
+    * criar uma tag `<img>`;
+    * definir o atributo `src`;
+    * definir largura de 200px;
+    * inserir a imagem na página.
+
+---
+
+11. Exercício 11 – Mini Agenda
+    Crie um formulário contendo:
+
+    * Nome;
+    * Telefone;
+    * botão Salvar.
+
+    Cada contato deve aparecer em uma tabela com as colunas:
+
+    | Nome | Telefone | Excluir |
+
+    O botão Excluir deve remover apenas o contato correspondente.
+
+---
+
+12. Exercício 12 – Mini Sistema de Biblioteca (Desafio Final)
+    Crie uma aplicação que permita cadastrar livros.
+
+    Cada livro deve possuir:
+
+    * Título;
+    * Autor;
+    * Ano;
+    * Categoria.
+
+    Ao clicar em Cadastrar:
+
+    * validar todos os campos;
+    * criar dinamicamente uma tabela;
+    * inserir o livro na tabela;
+    * permitir excluir um livro;
+    * exibir a quantidade total de livros cadastrados.
