@@ -5,7 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     echo "<h2>Erro: formulário não enviado corretamente.</h2>";
     echo "<a href='index.php' class='alert-link'>Voltar para a página inicial</a>";
     echo "</div>";
-
     exit;
 }
 
@@ -21,7 +20,6 @@ if ($quantidade <= 0) {
     echo "<h2>Erro: a quantidade deve ser maior que 0.</h2>";
     echo "<a href='index.php' class='alert-link'>Voltar para a página inicial</a>";
     echo "</div>";
-
     exit;
 }
 
@@ -31,7 +29,6 @@ if ($parcelas < 1 || $parcelas > 12) {
     echo "<h2>Erro: o número de parcelas deve estar entre 1 e 12.</h2>";
     echo "<a href='index.php' class='alert-link'>Voltar para a página inicial</a>";
     echo "</div>";
-
     exit;
 }
 
@@ -90,7 +87,6 @@ if ($pagamento == "pix") {
     echo "</div>";
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
